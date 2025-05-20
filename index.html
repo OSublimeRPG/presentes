@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <title>Carta de Aniversário</title>
+  <style>
+    * {
+      box-sizing: border-box;
+    }
+
+    body {
+      margin: 0;
+      padding: 0;
+      background-color: #111;
+      font-family: 'Georgia', serif;
+      color: #333;
+      height: 100vh;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      overflow: hidden;
+    }
+
+    .carta {
+      background: #fefefe url('https://www.transparenttextures.com/patterns/paper-fibers.png');
+      background-size: cover;
+      border: 1px solid #ccc;
+      border-radius: 8px;
+      padding: 30px 40px;
+      max-width: 500px;
+      width: 90%;
+      box-shadow: 0 10px 25px rgba(0, 0, 0, 0.5);
+      display: none;
+      flex-direction: column;
+      align-items: center;
+      animation: abrir 0.8s ease forwards;
+    }
+
+    .carta h1 {
+      color: #000000;
+      font-size: 32px;
+      margin-bottom: 15px;
+    }
+
+    .carta p {
+      font-size: 18px;
+      line-height: 1.6;
+      color: #444;
+    }
+
+    .btn-abrir {
+      padding: 12px 24px;
+      font-size: 18px;
+      border: none;
+      border-radius: 6px;
+      background-color: #1e3556;
+      color: white;
+      cursor: pointer;
+      transition: background-color 0.3s ease;
+    }
+
+    .btn-abrir:hover {
+      background-color: #284b7a;
+    }
+
+    @keyframes abrir {
+      from {
+        transform: scale(0.95);
+        opacity: 0;
+      }
+      to {
+        transform: scale(1);
+        opacity: 1;
+      }
+    }
+
+    img {
+      margin-left: 260px;
+      vertical-align: middle;
+      position: absolute;
+    }
+  </style>
+</head>
+<body>
+
+  <button class="btn-abrir" onclick="abrirCarta()">Abra a Carta</button>
+
+  <div class="carta" id="carta">
+    <h1>Feliz Aniversário Pai!!</h1>
+    <p>
+      Que seu dia seja muito bom e que você venha e ter muitos anos de vida pela frente e que seja cheio de alegria e muitas coisas boas!!
+      <br><br>
+      Ass: Arthur <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/1/10/Palmeiras_logo.svg/1024px-Palmeiras_logo.svg.png" alt="" width="40">
+    </p>
+  </div>
+
+  <!-- Áudio do hino do Palmeiras -->
+  <audio id="audio-hino" src="https://archive.org/download/hino-palmeiras/hino%20palmeiras.mp3"></audio>
+
+  <!-- Biblioteca de confete -->
+  <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.6.0/dist/confetti.browser.min.js"></script>
+
+  <script>
+    function abrirCarta() {
+      document.querySelector('.btn-abrir').style.display = 'none';
+      const carta = document.getElementById('carta');
+      carta.style.display = 'flex';
+
+      // Efeito de confete
+      confetti({
+        particleCount: 150,
+        spread: 70,
+        origin: { y: 0.6 }
+      });
+
+      // Tocar áudio do hino
+      const audio = document.getElementById('audio-hino');
+      audio.play();
+    }
+  </script>
+
+</body>
+</html>
